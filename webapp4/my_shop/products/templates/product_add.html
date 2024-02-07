@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0">
+                <h6>เพิ่มสินค้าใหม่</h6>
+            </div>
+            <div class="card-body pb-2">
+                
+                <form action="{% url 'product-add' %}"  method="post">
+
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col">
+
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">ชื่อสินค้า</label>
+                                <input class="form-control"
+                                        type="text" value="" name="name" id="name">
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="product_type_id" 
+                                class="form-control-label">หมวดหมู่</label>
+                                <select class="form-control" 
+                                name="category" id="category">                                   
+                                {% for category in categories %}
+                                    <option value="{{category.id}}">{{category.name}}</option>
+                                {% endfor %}      
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="cost" class="form-control-label">ราคาทุน</label>
+                                <input class="form-control" type="text" value="" name="cost" id="cost">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="price" class="form-control-label">ราคาขาย</label>
+                                <input class="form-control" type="text" value="" name="price" id="price">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="qty" class="form-control-label">จำนวนคงเหลือ</label>
+                                <input class="form-control" type="text" value="" name="qty" id="qty">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col">
+
+                            <label for="image_url" class="form-control-label">รูปภาพ (url)</label>
+                            <input class="form-control" type="text" value="" name="image_url" id="image_url">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="status">สถานะ</label>
+                            <select name="status" class="form-control" required>
+                                {% for status in product_status %}
+                                <option value="{{status.0}}">{{status.1}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success px-3 py-2"><i class="fa fa-save"></i>
+                                    บันทึก</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            </form>
+
+        </div>
+        <div class="card-footer pb-0">
+
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
+

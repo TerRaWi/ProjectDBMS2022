@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0">
+                <h6>ยอดขายรายวัน</h6>
+            </div>
+            <div class="card-body pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                      <thead>
+                        <tr>
+                        
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>                        
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sub Total</th>
+                          <th class="text-secondary opacity-7"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for sale in day_sales %}
+                        <tr>
+                         
+                          <td>
+                            <span class="text-secondary text-xs font-weight-bold">{{sale.date_created}}</span>
+                          </td>                        
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{sale.sub_total__sum}}</span>
+                          </td>
+                          <td class="align-middle">
+                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+
+            </div>
+
+            </form>
+
+        </div>
+        <div class="card-footer pb-0">
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0">
+                <h6>รายการสั่งซื้อทั้งหมด</h6>
+            </div>
+            <div class="card-body pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                      <thead>
+                        <tr>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sub Total</th>
+                          <th class="text-secondary opacity-7"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for sale in sales %}
+                        <tr>
+                          <td>
+                            <span class="text-secondary text-xs font-weight-bold">{{sale.id}}</span>
+                          </td>
+                          <td>
+                            <span class="text-secondary text-xs font-weight-bold">{{sale.date_added}}</span>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-success">Active</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{sale.customer}}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{sale.sub_total}}</span>
+                          </td>
+                          <td class="align-middle">
+                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+
+            </div>
+
+            </form>
+
+        </div>
+        <div class="card-footer pb-0">
+
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,14 @@
+[
+    {
+        "model": "customers.customer",
+        "pk": 1,
+        "fields": {
+            "first_name": "แมนแมน",
+            "last_name": "จัง",
+            "address": "CP@KKU",
+            "email": "pongsathon.janyoi@gmail.com",
+            "phone": "089-xxx-xxxx"
+            
+        }
+    }
+]
